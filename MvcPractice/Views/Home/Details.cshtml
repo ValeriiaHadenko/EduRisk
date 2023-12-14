@@ -1,0 +1,12 @@
+﻿@{
+    @model MvcPractice.Models.Student
+
+    @using MvcPractice.Views.HtmlHelpers
+
+    ViewData["Title"] = $"Student Details: {Model.ID}";
+
+}
+
+<div class="mb-5"></div>
+
+@Html.StudentDetails(Model)

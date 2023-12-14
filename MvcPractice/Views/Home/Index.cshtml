@@ -1,0 +1,227 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    @model MvcPractice.Models.Student
+    @using static MvcPractice.Models.StudentTypes;
+}
+
+<form asp-action="Predict" method="post" class="mt-3">
+
+    <div class="form-row row mb-3">
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Status, "Marital Status:")
+            @Html.DropDownListFor(model => model.Status, new SelectList(MaritalStatus, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Nacionality, "Nacionality:")
+            @Html.DropDownListFor(model => model.Nacionality, new SelectList(Nationality, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Nacionality, "Application Mode:")
+            @Html.DropDownListFor(model => model.ApplicationMode, new SelectList(ApplicationMode, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-2">
+            <label>Application Order:</label>
+            <input class="form-control" type="number" min="0" max="9" />
+        </div>
+
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.Course, "Course:")
+            @Html.DropDownListFor(model => model.Course, new SelectList(Course, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-row row mb-3">
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.Attendance, "Attendance:")
+            @Html.RadioButtonFor(model => model.Attendance, value: 1) Daytime
+            @Html.RadioButtonFor(model => model.Attendance, value: 0) Evening
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.Gender, "Gender:")
+            @Html.RadioButtonFor(model => model.Gender, value: 1) Male
+            @Html.RadioButtonFor(model => model.Gender, value: 0) Female
+        </div>
+
+        <div class="col-md-4">
+            @Html.LabelFor(model => model.IsInternational, "International:")
+            @Html.CheckBoxFor(model => model.IsInternational)
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <div class="col-md-2">
+            <label asp-for="AdmissionGrade">Admission Grade:</label>
+        </div>
+        <div class="col-md-4">
+            <input asp-for="AdmissionGrade" class="form-control" type="number" min="0" max="200" />
+        </div>
+        <div class="col-md-2">
+            <label asp-for="Age">Age at Enrollment:</label>
+        </div>
+        <div class="col-md-4">
+            <input asp-for="Age" class="form-control" type="number" />
+        </div>
+    </div>
+
+    <div class="form-row row mb-3">
+        <div class="col-md-2">
+            @Html.LabelFor(model => model.PreviousQualification, "Previous qualification:")
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownListFor(model => model.PreviousQualification, new SelectList(EducationLevel, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+        <div class="col-md-3">
+            <label>Previous qualification (grade):</label>
+        </div>
+        <div class="col-md-3">
+            <input type="number" asp-for="PreviousGrade" class="form-control" min="0" max="200" step="1">
+        </div>
+    </div>
+
+    <div class="form-row row mb-3">
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.Course, "Mother's Qualification:")
+            @Html.DropDownListFor(model => model.MothersQualification, new SelectList(EducationLevel, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.MothersOccupation, "Mother's occupation:")
+            @Html.DropDownListFor(model => model.MothersOccupation, new SelectList(Occupation, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.FathersQualification, "Father's Qualification:")
+            @Html.DropDownListFor(model => model.FathersQualification, new SelectList(EducationLevel, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.FathersOccupation, "Father's occupation:")
+            @Html.DropDownListFor(model => model.FathersOccupation, new SelectList(Occupation, "Key", "Value"), "Select options", new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-row row mb-3">
+        <div class="form-group col-md-2">
+            @Html.LabelFor(model => model.IsDisplaced, "Displaced:")
+            @Html.CheckBoxFor(model => model.IsDisplaced)
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.AreTuitionFeesUpToDate, "Tuition Fees Up to Date:")
+            @Html.CheckBoxFor(model => model.AreTuitionFeesUpToDate)
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.IsScholarshipHolder, "Scholarship Holder:")
+            @Html.CheckBoxFor(model => model.IsScholarshipHolder)
+        </div>
+
+        <div class="form-group col-md-3">
+            @Html.LabelFor(model => model.HasSpecialNeeds, "Educational Special Needs:")
+            @Html.CheckBoxFor(model => model.HasSpecialNeeds)
+        </div>
+
+        <div class="form-group col-md-1">
+            @Html.LabelFor(model => model.IsDebtor, "Debtor:")
+            @Html.CheckBoxFor(model => model.IsDebtor)
+        </div>
+    </div>
+
+    <div class="form-row row mb-3">
+        <div class="form-group col-md-4">
+            <label>Curricular units 1st sem (credited):</label>
+            <input type="number" asp-for="CreditedUnits1stSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 1st sem (enrolled):</label>
+            <input type="number" asp-for="EnrolledUnits1stSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 1st sem (evaluations):</label>
+            <input type="number" asp-for="EvaluationsUnits1stSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 1st sem (approved):</label>
+            <input type="number" asp-for="ApprovedUnits1stSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 1st sem (grade):</label>
+            <input type="number" asp-for="GradeUnits1stSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 1st sem (without evaluations):</label>
+            <input type="number" asp-for="WithoutEvaluationsUnits1stSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 2nd sem (credited):</label>
+            <input type="number" asp-for="CreditedUnits2ndSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 2nd sem (enrolled):</label>
+            <input type="number" asp-for="EnrolledUnits2ndSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 2nd sem (evaluations):</label>
+            <input type="number" asp-for="EvaluationsUnits2ndSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 2nd sem (approved):</label>
+            <input type="number" asp-for="ApprovedUnits2ndSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 2nd sem (grade):</label>
+            <input type="number" asp-for="GradeUnits2ndSem" class="form-control">
+        </div>
+
+        <div class="form-group col-md-4">
+            <label>Curricular units 2nd sem (without evaluations):</label>
+            <input type="number" asp-for="WithoutEvaluationsUnits2ndSem" class="form-control">
+        </div>
+    </div>
+
+    <div class="form-row row mb-3">
+
+        <div class="form-group row col-md-4">
+            <div class="col-md-6">
+                <label>Unemployment rate:</label>
+            </div>
+            <div class="col-md-4">
+                <input type="number" asp-for="UnemploymentRate" class="form-control" step="0.01">
+            </div>
+        </div>
+
+        <div class="form-group row col-md-4">
+            <div class="col-md-6">
+                <label>Inflation rate:</label>
+            </div>
+            <div class="col-md-4">
+                <input type="number" asp-for="InflationRate" class="form-control" step="0.01">
+            </div>
+        </div>
+
+        <div class="form-group row col-md-4">
+            <div class="col-md-4">
+                <label>GDP:</label>
+            </div>
+            <div class="col-md-4">
+                <input type="number" asp-for="GDP" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Predict Target</button>
+
+</form>

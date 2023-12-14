@@ -1,0 +1,83 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/leroro/Projects/MvcPractice/MvcPractice/MvcPractice.csproj": {}
+  },
+  "projects": {
+    "/Users/leroro/Projects/MvcPractice/MvcPractice/MvcPractice.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/leroro/Projects/MvcPractice/MvcPractice/MvcPractice.csproj",
+        "projectName": "MvcPractice",
+        "projectPath": "/Users/leroro/Projects/MvcPractice/MvcPractice/MvcPractice.csproj",
+        "packagesPath": "/Users/leroro/.nuget/packages/",
+        "outputPath": "/Users/leroro/Projects/MvcPractice/MvcPractice/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/leroro/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.0.1, )"
+            },
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "PagedList.Mvc": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "X.PagedList.Mvc.Core": {
+              "target": "Package",
+              "version": "[8.4.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.403/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

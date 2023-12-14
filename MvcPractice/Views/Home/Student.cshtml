@@ -1,0 +1,30 @@
+﻿@{
+    @using MvcPractice.Models;
+
+    @model IEnumerable<Student>
+
+    ViewData["Title"] = "Student list";
+}
+
+
+
+<div class="tabel d-flex justify-content-center mt-2">
+
+    <table class="table table-hover ">
+        <thead>
+            <tr>
+                <td class="col-2">Student ID</td>
+                <td class="col-1">Course status</td>
+            </tr>
+        </thead>
+
+        @foreach (Student s in Model)
+        {
+            <tr>
+                <td><a class="nav-link" href="/student/@s.ID">@s.ID</a></td>
+                <td>@s.Target</td>
+            </tr>
+        }
+    </table>
+
+</div>
